@@ -33,13 +33,13 @@ export default function HeroSection() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-          {/* Left — Text */}
+          {/* Left - Text */}
           <div className="max-w-xl">
             {/* Badge */}
             <motion.div {...fadeUp(0)} className="mb-8">
               <span className="inline-flex items-center gap-2 bg-[#7C9A7E]/12 text-[#3D5A40] text-xs font-semibold tracking-widest uppercase px-5 py-2.5 rounded-full border border-[#7C9A7E]/20">
                 <Sparkles className="w-3.5 h-3.5 text-[#C9A84C]" />
-                {t("badge")} — Bien-être Shop
+                {t("badge")} - Bien-être Shop
               </span>
             </motion.div>
 
@@ -109,7 +109,7 @@ export default function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Right — Lifestyle image */}
+          {/* Right - Lifestyle image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.97, x: 20 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
@@ -133,7 +133,7 @@ export default function HeroSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#1a2e1c]/20 via-transparent to-transparent" />
             </div>
 
-            {/* Floating card — naturalness */}
+            {/* Floating card - naturalness */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -151,7 +151,7 @@ export default function HeroSection() {
               </div>
             </motion.div>
 
-            {/* Floating card — trust */}
+            {/* Floating card - trust */}
             <motion.div
               initial={{ opacity: 0, y: -12 }}
               animate={{ opacity: 1, y: 0 }}

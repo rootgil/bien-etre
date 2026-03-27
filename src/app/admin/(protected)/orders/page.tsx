@@ -253,7 +253,7 @@ export default function OrdersPage() {
         </div>
 
         <p className="text-xs text-zinc-400 text-center">
-          Données de simulation — les vraies commandes proviennent de Google Sheets via Apps Script.
+          Données de simulation - les vraies commandes proviennent de Google Sheets via Apps Script.
         </p>
       </div>
     </div>

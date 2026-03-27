@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: locale === "fr"
-      ? "Bien-être Shop — Produits naturels pour votre bien-être"
-      : "Bien-être Shop — Natural Wellness Products",
+      ? "Bien-être Shop - Produits naturels pour votre bien-être"
+      : "Bien-être Shop - Natural Wellness Products",
     description: t("subtitle"),
   };
 }

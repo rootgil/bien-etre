@@ -1,4 +1,4 @@
-# Bien-être Shop — Site E-Commerce
+# Bien-être Shop - Site E-Commerce
 
 Site e-commerce sur-mesure Next.js 16, sans Shopify, avec détection automatique de pays/devise/langue.
 
@@ -6,10 +6,10 @@ Site e-commerce sur-mesure Next.js 16, sans Shopify, avec détection automatique
 
 - **Next.js 16** (App Router, Turbopack)
 - **Tailwind CSS v4** + shadcn/ui
-- **next-intl** — i18n FR/EN automatique
-- **Frankfurter API** — taux de change gratuits (pas de clé requise)
-- **Vercel Edge Function** `/api/geo` — géolocalisation par IP header
-- **Google Sheets** via Apps Script — stockage des commandes
+- **next-intl** - i18n FR/EN automatique
+- **Frankfurter API** - taux de change gratuits (pas de clé requise)
+- **Vercel Edge Function** `/api/geo` - géolocalisation par IP header
+- **Google Sheets** via Apps Script - stockage des commandes
 
 ---
 
@@ -22,7 +22,7 @@ npm run dev
 # → http://localhost:3000 (redirige vers /fr)
 ```
 
-En local, la géoloc IP ne fonctionne pas (pas de header Vercel). Le site tombe en fallback Français / EUR — comportement normal.
+En local, la géoloc IP ne fonctionne pas (pas de header Vercel). Le site tombe en fallback Français / EUR - comportement normal.
 
 ---
 

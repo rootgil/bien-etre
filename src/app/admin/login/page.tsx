@@ -4,7 +4,7 @@ import { LoginForm } from "./LoginForm";
 import { Leaf } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Connexion admin — Bien-être",
+  title: "Connexion admin - Bien-être",
   robots: { index: false, follow: false },
 };
 

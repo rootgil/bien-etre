@@ -3,8 +3,8 @@ import { NextResponse } from "next/server";
 export const runtime = "nodejs";
 
 // Currencies NOT covered by Frankfurter (West/Central African + others)
-// XOF/XAF are officially pegged to EUR at a fixed rate — exact, never changes
-// Others are approximate — update manually every few months
+// XOF/XAF are officially pegged to EUR at a fixed rate - exact, never changes
+// Others are approximate - update manually every few months
 const MANUAL_RATES: Record<string, number> = {
   GNF: 9500,   // Franc guinéen
   XOF: 655.96, // Franc CFA UEMOA (peg EUR fixe officiel)
@@ -20,7 +20,7 @@ export async function GET() {
   let source = "fallback";
 
   try {
-    // Frankfurter API — free, no key, official ECB data
+    // Frankfurter API - free, no key, official ECB data
     // GHS, GNF, XOF, XAF not supported by Frankfurter → covered by MANUAL_RATES
     const res = await fetch(
       "https://api.frankfurter.app/latest?from=EUR&to=USD,GBP,CHF,CAD",

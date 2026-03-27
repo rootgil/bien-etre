@@ -33,7 +33,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
         href={`/${locale}/produit/${product.slug}`}
         className="group block bg-white rounded-2xl overflow-hidden border border-[#E2DDD6]/70 shadow-sm hover:shadow-xl hover:shadow-[#C9A84C]/8 transition-all duration-500 hover:-translate-y-1"
       >
-        {/* Image — portrait ratio */}
+        {/* Image - portrait ratio */}
         <div className="relative aspect-[3/4] overflow-hidden bg-[#F5F0EA]">
           <Image
             src={product.images[0] ?? "/images/placeholder.svg"}
@@ -76,7 +76,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           </p>
 
           <div className="flex items-center justify-between">
-            {/* Price — gold accent */}
+            {/* Price - gold accent */}
             <div>
               {loading ? (
                 <div className="h-7 w-20 bg-[#E2DDD6] rounded-lg animate-pulse" />

@@ -110,7 +110,7 @@ export function ProductsClient({ initialProducts }: ProductsClientProps) {
     );
     setEditingId(null);
     setEditForm({});
-    showToast("Produit modifié (simulation — non persisté)");
+    showToast("Produit modifié (simulation - non persisté)");
   }
 
   // ── Add product ────────────────────────────────────────────────────────────
@@ -149,7 +149,7 @@ export function ProductsClient({ initialProducts }: ProductsClientProps) {
     setShowAddModal(false);
     setAddForm(EMPTY_FORM);
     setAddErrors({});
-    showToast("Produit ajouté (simulation — non persisté)");
+    showToast("Produit ajouté (simulation - non persisté)");
   }
 
   // ── Delete product ─────────────────────────────────────────────────────────

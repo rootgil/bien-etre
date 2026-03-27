@@ -57,7 +57,7 @@ export function useGeo() {
           const res = await fetch(url, { cache: "no-store" });
           if (!res.ok) throw new Error("Geo failed");
           geoData = await res.json();
-          // Don't cache the EUR fallback in dev — it would lock the wrong currency
+          // Don't cache the EUR fallback in dev - it would lock the wrong currency
           const isFallback = geoData.countryCode === "FR" && !devCountryOverride;
           if (!isFallback) {
             localStorage.setItem(
