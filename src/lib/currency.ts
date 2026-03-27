@@ -3,6 +3,15 @@ import type { ExchangeRates } from "@/types";
 const RATES_CACHE_KEY = "bienetre_exchange_rates";
 const RATES_TTL_MS = 6 * 60 * 60 * 1000; // 6 hours
 
+// Used when live rates haven't loaded yet — avoids showing raw EUR prices to GNF users
+const FALLBACK_RATES_CLIENT: Record<string, number> = {
+  GNF: 10131, XOF: 655.96, XAF: 655.96, CDF: 2688,
+  USD: 1.15, GBP: 0.87, EUR: 1, CHF: 0.92, CAD: 1.60,
+  NGN: 1597, GHS: 12.7, MAD: 10.8, DZD: 153, ZAR: 19.7,
+  KES: 150, EGP: 61, TND: 3.38, MGA: 4784, MUR: 54,
+  AED: 4.24, SAR: 4.33,
+};
+
 export async function getExchangeRates(): Promise<ExchangeRates | null> {
   if (typeof window !== "undefined") {
     const cached = getCachedRates();
@@ -45,8 +54,9 @@ export function convertPrice(
   targetCurrency: string,
   rates: ExchangeRates | null
 ): number {
-  if (!rates || targetCurrency === "EUR") return priceEUR;
-  const rate = rates.rates[targetCurrency];
+  if (targetCurrency === "EUR") return priceEUR;
+  const liveRate = rates?.rates[targetCurrency];
+  const rate = liveRate ?? FALLBACK_RATES_CLIENT[targetCurrency];
   if (!rate) return priceEUR;
   return Math.round(priceEUR * rate);
 }
