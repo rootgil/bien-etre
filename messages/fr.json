@@ -121,6 +121,27 @@
     "detected": "Devise détectée",
     "loading": "Chargement..."
   },
+  "privacyPage": {
+    "title": "Politique de confidentialité",
+    "lastUpdated": "Dernière mise à jour : mars 2026",
+    "intro": "Bien-être Shop s'engage à protéger la vie privée de ses clients. Cette politique explique quelles données nous collectons, comment nous les utilisons et vos droits.",
+    "section1Title": "Données collectées",
+    "section1Text": "Lors de la passation d'une commande, nous collectons les informations suivantes : prénom, nom, numéro de téléphone, adresse email et adresse de livraison. Ces données sont nécessaires au traitement et à la livraison de votre commande.",
+    "section2Title": "Utilisation des données",
+    "section2Text": "Vos données personnelles sont utilisées exclusivement pour : traiter et confirmer votre commande, vous contacter via WhatsApp ou email pour les détails de livraison, et améliorer notre service client. Nous ne vendons, ne louons et ne partageons jamais vos données avec des tiers à des fins commerciales.",
+    "section3Title": "Géolocalisation et devise",
+    "section3Text": "Notre site utilise votre adresse IP pour détecter automatiquement votre pays et afficher les prix dans votre devise locale. Ces informations sont stockées temporairement dans le stockage local de votre navigateur (localStorage) pendant 24 heures et ne sont pas transmises à des tiers.",
+    "section4Title": "Cookies et stockage local",
+    "section4Text": "Nous n'utilisons pas de cookies de traçage ou publicitaires. Nous utilisons uniquement le stockage local du navigateur (localStorage) pour mémoriser vos préférences de langue et de devise lors de votre visite.",
+    "section5Title": "Sécurité des données",
+    "section5Text": "Vos données sont transmises via des connexions sécurisées (HTTPS). Nous conservons vos informations de commande uniquement le temps nécessaire à l'exécution de votre commande.",
+    "section6Title": "Vos droits",
+    "section6Text": "Conformément aux lois applicables sur la protection des données, vous disposez des droits suivants : accès à vos données personnelles, rectification des informations inexactes, suppression de vos données, et opposition au traitement de vos données. Pour exercer ces droits, contactez-nous à l'adresse ci-dessous.",
+    "section7Title": "Contact",
+    "section7Text": "Pour toute question relative à cette politique de confidentialité ou pour exercer vos droits, contactez-nous via le formulaire de contact ou par WhatsApp.",
+    "contactLink": "Nous contacter",
+    "backHome": "Retour à l'accueil"
+  },
   "errors": {
     "orderFailed": "Une erreur est survenue. Veuillez réessayer.",
     "geoFailed": "Impossible de détecter votre localisation.",

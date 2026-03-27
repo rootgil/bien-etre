@@ -5,8 +5,7 @@ import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Leaf, Globe } from "lucide-react";
-import { useGeo } from "@/hooks/useGeo";
+import { Menu, X, Leaf } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function Header() {
@@ -14,7 +13,6 @@ export default function Header() {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
-  const { geo, loading } = useGeo();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -82,28 +80,8 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Right side: currency + lang switcher */}
+          {/* Right side: lang switcher */}
           <div className="flex items-center gap-3">
-            {/* Currency badge — click to cycle country in dev */}
-            <button
-              className="hidden sm:flex items-center gap-1.5 bg-[#7C9A7E]/10 px-3 py-1.5 rounded-full hover:bg-[#7C9A7E]/20 transition-colors cursor-pointer"
-              title={`${geo.country} · Cliquer pour changer de pays (dev)`}
-              onClick={() => {
-                const countries = ["GN", "CI", "SN", "GH", "FR"];
-                const current = localStorage.getItem("bienetre_dev_country") || geo.countryCode || "FR";
-                const idx = countries.indexOf(current);
-                const next = countries[(idx + 1) % countries.length];
-                localStorage.setItem("bienetre_dev_country", next);
-                localStorage.removeItem("bienetre_geo");
-                window.location.reload();
-              }}
-            >
-              <Globe className="w-3.5 h-3.5 text-[#7C9A7E]" />
-              <span className="text-xs font-medium text-[#3D5A40]">
-                {loading ? "..." : `${geo.currency}`}
-              </span>
-            </button>
-
             {/* Lang toggle */}
             <button
               onClick={toggleLocale}
@@ -149,11 +127,7 @@ export default function Header() {
                   {link.label}
                 </Link>
               ))}
-              <div className="mt-2 pt-2 border-t border-[#7C9A7E]/10 flex items-center justify-between px-4">
-                <span className="text-xs text-[#3D5A40]/50">
-                  {loading ? "..." : `${geo.country} · ${geo.currency}`}
-                </span>
-              </div>
+              <div className="mt-2 pt-2 border-t border-[#7C9A7E]/10 px-4" />
             </nav>
           </motion.div>
         )}

@@ -121,6 +121,27 @@
     "detected": "Detected currency",
     "loading": "Loading..."
   },
+  "privacyPage": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: March 2026",
+    "intro": "Bien-être Shop is committed to protecting the privacy of its customers. This policy explains what data we collect, how we use it, and your rights.",
+    "section1Title": "Data collected",
+    "section1Text": "When placing an order, we collect the following information: first name, last name, phone number, email address, and delivery address. This data is necessary to process and deliver your order.",
+    "section2Title": "Use of data",
+    "section2Text": "Your personal data is used exclusively to: process and confirm your order, contact you via WhatsApp or email for delivery details, and improve our customer service. We never sell, rent, or share your data with third parties for commercial purposes.",
+    "section3Title": "Geolocation and currency",
+    "section3Text": "Our site uses your IP address to automatically detect your country and display prices in your local currency. This information is temporarily stored in your browser's local storage (localStorage) for 24 hours and is not transmitted to third parties.",
+    "section4Title": "Cookies and local storage",
+    "section4Text": "We do not use tracking or advertising cookies. We only use browser local storage (localStorage) to remember your language and currency preferences during your visit.",
+    "section5Title": "Data security",
+    "section5Text": "Your data is transmitted over secure connections (HTTPS). We retain your order information only for as long as necessary to fulfill your order.",
+    "section6Title": "Your rights",
+    "section6Text": "In accordance with applicable data protection laws, you have the following rights: access to your personal data, correction of inaccurate information, deletion of your data, and objection to the processing of your data. To exercise these rights, contact us at the address below.",
+    "section7Title": "Contact",
+    "section7Text": "For any questions regarding this privacy policy or to exercise your rights, contact us via the contact form or by WhatsApp.",
+    "contactLink": "Contact us",
+    "backHome": "Back to home"
+  },
   "errors": {
     "orderFailed": "An error occurred. Please try again.",
     "geoFailed": "Unable to detect your location.",
