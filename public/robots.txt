@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /api/
+Disallow: /fr/confirmation
+Disallow: /en/confirmation
+
+Sitemap: https://votre-domaine.com/sitemap.xml

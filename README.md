@@ -1,36 +1,156 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bien-être Shop — Site E-Commerce
 
-## Getting Started
+Site e-commerce sur-mesure Next.js 16, sans Shopify, avec détection automatique de pays/devise/langue.
 
-First, run the development server:
+## Stack
+
+- **Next.js 16** (App Router, Turbopack)
+- **Tailwind CSS v4** + shadcn/ui
+- **next-intl** — i18n FR/EN automatique
+- **Frankfurter API** — taux de change gratuits (pas de clé requise)
+- **Vercel Edge Function** `/api/geo` — géolocalisation par IP header
+- **Google Sheets** via Apps Script — stockage des commandes
+
+---
+
+## Lancer en local
 
 ```bash
+cd bien-etre-shop
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# → http://localhost:3000 (redirige vers /fr)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+En local, la géoloc IP ne fonctionne pas (pas de header Vercel). Le site tombe en fallback Français / EUR — comportement normal.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Variables d'environnement
 
-## Learn More
+Copier `.env.example` en `.env.local` et remplir :
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+cp .env.example .env.local
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Variable | Description | Requis |
+|---|---|---|
+| `NEXT_PUBLIC_SITE_URL` | URL du site en prod | Oui |
+| `APPS_SCRIPT_URL` | URL du Google Apps Script | Non (mock en dev) |
+| `NEXT_PUBLIC_GA_ID` | ID Google Analytics 4 | Non |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+> Sans `APPS_SCRIPT_URL`, les commandes sont loggées en console (mode mock).
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Ajouter un produit
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Ouvrir `data/products.json` et ajouter un objet en suivant ce modèle :
+
+```json
+{
+  "id": "mon-nouveau-produit",
+  "slug": "mon-nouveau-produit",
+  "category": "soin-corps",
+  "priceEUR": 15,
+  "images": ["/images/products/mon-produit-1.webp"],
+  "featured": false,
+  "stock": true,
+  "name": { "fr": "Mon Produit", "en": "My Product" },
+  "description": { "fr": "Description FR...", "en": "English description..." },
+  "shortDescription": { "fr": "Court FR", "en": "Short EN" },
+  "benefits": {
+    "fr": ["Bénéfice 1", "Bénéfice 2"],
+    "en": ["Benefit 1", "Benefit 2"]
+  }
+}
+```
+
+Placer les images dans `public/images/products/` au format `.webp`.
+
+**Catégories disponibles :** `hygiene-bucco-dentaire` | `soin-corps` | `beaute`
+
+---
+
+## Configurer Google Sheets
+
+### 1. Créer le Google Sheet
+
+Créer un Google Sheet nommé **"Commandes Bien-être Shop"** avec ces colonnes :
+
+```
+Date | Heure | Prénom | Nom | Téléphone | Email | Adresse | Ville | Pays | Produit | Quantité | Prix | Devise | Message
+```
+
+### 2. Déployer le Google Apps Script
+
+Dans le Sheet : **Extensions → Apps Script** → coller ce code :
+
+```javascript
+function doPost(e) {
+  try {
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    const data = JSON.parse(e.postData.contents);
+
+    sheet.appendRow([
+      data.date,
+      data.time,
+      data.firstName,
+      data.lastName,
+      data.phone,
+      data.email,
+      data.address,
+      data.city,
+      data.country,
+      data.product,
+      data.quantity,
+      data.price,
+      data.currency,
+      data.message || ""
+    ]);
+
+    return ContentService
+      .createTextOutput(JSON.stringify({ success: true }))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (err) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ error: err.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+```
+
+### 3. Déployer comme Web App
+
+- Cliquer **Déployer → Nouveau déploiement**
+- Type : **Application Web**
+- Exécuter en tant que : **Moi**
+- Accès : **Tout le monde**
+- Copier l'URL → coller dans `APPS_SCRIPT_URL` dans `.env.local`
+
+---
+
+## Déployer sur Vercel
+
+```bash
+npm install -g vercel
+vercel --prod
+```
+
+Ajouter les variables d'env dans le dashboard Vercel.
+
+---
+
+## Devises supportées
+
+| Pays | Code | Devise | Source |
+|---|---|---|---|
+| Guinée | GN | GNF | Fallback manuel |
+| Côte d'Ivoire | CI | XOF | Fallback (pegged EUR) |
+| Ghana | GH | GHS | Frankfurter |
+| France | FR | EUR | Base |
+| USA | US | USD | Frankfurter |
+| UK | GB | GBP | Frankfurter |
+| Suisse | CH | CHF | Frankfurter |
+| Canada | CA | CAD | Frankfurter |

@@ -1,0 +1,144 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "products": "Produits",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "header": {
+    "tagline": "Votre bien-être, notre passion"
+  },
+  "hero": {
+    "badge": "Nouveauté",
+    "title": "Prenez soin de vous,",
+    "titleAccent": "naturellement.",
+    "subtitle": "Des produits bien-être soigneusement sélectionnés pour sublimer votre quotidien. Livraison en Guinée, Côte d'Ivoire et au Ghana.",
+    "cta": "Découvrir nos produits",
+    "ctaSecondary": "En savoir plus"
+  },
+  "categories": {
+    "title": "Nos catégories",
+    "subtitle": "Des solutions naturelles pour chaque besoin",
+    "hygiene": "Hygiène Bucco-dentaire",
+    "soin": "Soins Corps",
+    "beaute": "Beauté Naturelle"
+  },
+  "featured": {
+    "title": "Produits phares",
+    "subtitle": "Nos meilleures ventes, plébiscitées par nos clients",
+    "viewAll": "Voir tous les produits"
+  },
+  "product": {
+    "addToOrder": "Commander maintenant",
+    "inStock": "En stock",
+    "outOfStock": "Rupture de stock",
+    "benefits": "Bienfaits",
+    "details": "Détails du produit",
+    "orderDirect": "Passer une commande",
+    "priceFrom": "À partir de"
+  },
+  "catalog": {
+    "title": "Tous nos produits",
+    "subtitle": "Découvrez notre sélection complète de produits bien-être",
+    "filter": "Filtrer",
+    "sort": "Trier par",
+    "sortFeatured": "En vedette",
+    "sortPriceLow": "Prix croissant",
+    "sortPriceHigh": "Prix décroissant",
+    "sortName": "Nom A-Z",
+    "noProducts": "Aucun produit trouvé",
+    "allCategories": "Toutes les catégories"
+  },
+  "orderForm": {
+    "title": "Passer une commande",
+    "subtitle": "Remplissez le formulaire ci-dessous et nous vous contacterons pour confirmer votre commande.",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "phone": "Numéro de téléphone",
+    "phonePlaceholder": "+224 600 000 000",
+    "email": "Adresse email",
+    "address": "Adresse de livraison",
+    "city": "Ville",
+    "country": "Pays",
+    "product": "Produit",
+    "quantity": "Quantité",
+    "message": "Message / Remarque (optionnel)",
+    "messagePlaceholder": "Précisions sur votre commande...",
+    "submit": "Confirmer ma commande",
+    "submitting": "Envoi en cours...",
+    "required": "Ce champ est obligatoire",
+    "invalidEmail": "Adresse email invalide",
+    "minQuantity": "La quantité minimale est 1",
+    "selectCountry": "Sélectionnez votre pays"
+  },
+  "confirmation": {
+    "title": "Commande reçue !",
+    "subtitle": "Merci pour votre commande. Nous vous contacterons très bientôt pour confirmer les détails de livraison.",
+    "orderSummary": "Récapitulatif de commande",
+    "product": "Produit",
+    "quantity": "Quantité",
+    "total": "Total estimé",
+    "customerInfo": "Vos informations",
+    "backHome": "Retour à l'accueil",
+    "continueShopping": "Continuer les achats",
+    "whatsappCta": "Suivre par WhatsApp"
+  },
+  "about": {
+    "title": "Notre histoire",
+    "subtitle": "Bien-être Shop, nés de la passion du mieux-vivre",
+    "mission": "Notre mission",
+    "missionText": "Rendre les produits de bien-être authentiques et efficaces accessibles à tous, en Guinée, en Côte d'Ivoire, au Ghana et au-delà. Nous croyons que prendre soin de soi est un droit, pas un luxe.",
+    "values": "Nos valeurs",
+    "value1Title": "Authenticité",
+    "value1Text": "Des produits soigneusement sélectionnés, dont nous garantissons la qualité.",
+    "value2Title": "Accessibilité",
+    "value2Text": "Des prix justes et transparents, dans votre devise locale.",
+    "value3Title": "Proximité",
+    "value3Text": "Un service client attentionné, disponible pour vous accompagner."
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Une question ? Nous sommes là pour vous aider.",
+    "name": "Votre nom",
+    "email": "Votre email",
+    "message": "Votre message",
+    "submit": "Envoyer le message",
+    "submitting": "Envoi...",
+    "successTitle": "Message envoyé !",
+    "successText": "Nous vous répondrons dans les plus brefs délais.",
+    "whatsapp": "WhatsApp",
+    "emailLabel": "Email"
+  },
+  "footer": {
+    "tagline": "Votre bien-être, notre passion.",
+    "quickLinks": "Liens rapides",
+    "legal": "Mentions légales",
+    "privacy": "Politique de confidentialité",
+    "rights": "Tous droits réservés.",
+    "poweredBy": "Conçu avec soin pour votre bien-être."
+  },
+  "currency": {
+    "detected": "Devise détectée",
+    "loading": "Chargement..."
+  },
+  "errors": {
+    "orderFailed": "Une erreur est survenue. Veuillez réessayer.",
+    "geoFailed": "Impossible de détecter votre localisation.",
+    "rateFailed": "Impossible de charger les taux de change."
+  },
+  "countries": {
+    "GN": "Guinée",
+    "CI": "Côte d'Ivoire",
+    "GH": "Ghana",
+    "SN": "Sénégal",
+    "ML": "Mali",
+    "BF": "Burkina Faso",
+    "CM": "Cameroun",
+    "FR": "France",
+    "BE": "Belgique",
+    "CH": "Suisse",
+    "CA": "Canada",
+    "US": "États-Unis",
+    "OTHER": "Autre pays"
+  }
+}

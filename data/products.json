@@ -1,0 +1,58 @@
+[
+  {
+    "id": "parfum-bouche-hi-smile",
+    "slug": "parfum-bouche-hi-smile",
+    "category": "hygiene-bucco-dentaire",
+    "priceEUR": 11,
+    "images": [
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=600&q=80",
+      "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&q=80"
+    ],
+    "featured": true,
+    "stock": true,
+    "name": {
+      "fr": "Parfum de bouche Hi Smile",
+      "en": "Hi Smile Mouth Freshener"
+    },
+    "description": {
+      "fr": "Découvrez le secret d'une haleine fraîche et d'un sourire radieux avec notre Parfum de bouche Hi Smile. Formulé avec des ingrédients naturels soigneusement sélectionnés, ce soin bucco-dentaire vous offre une fraîcheur longue durée tout au long de la journée. Sa formule douce et efficace respecte votre santé bucco-dentaire tout en vous garantissant une haleine irréprochable.",
+      "en": "Discover the secret to fresh breath and a radiant smile with our Hi Smile Mouth Freshener. Formulated with carefully selected natural ingredients, this oral care product provides long-lasting freshness throughout the day. Its gentle and effective formula respects your oral health while guaranteeing impeccable breath."
+    },
+    "shortDescription": {
+      "fr": "Fraîcheur longue durée pour un sourire radieux.",
+      "en": "Long-lasting freshness for a radiant smile."
+    },
+    "benefits": {
+      "fr": ["Haleine fraîche toute la journée", "Formule naturelle", "Respecte l'émail dentaire", "Goût agréable"],
+      "en": ["Fresh breath all day", "Natural formula", "Enamel-safe", "Pleasant taste"]
+    }
+  },
+  {
+    "id": "perfect-x",
+    "slug": "perfect-x",
+    "category": "soin-corps",
+    "priceEUR": 22,
+    "images": [
+      "https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=600&q=80",
+      "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=600&q=80"
+    ],
+    "featured": true,
+    "stock": true,
+    "name": {
+      "fr": "Perfect X",
+      "en": "Perfect X"
+    },
+    "description": {
+      "fr": "Perfect X est votre allié bien-être au quotidien. Ce produit d'exception, conçu pour sublimer votre routine de soins, apporte à votre corps tout ce dont il a besoin pour rayonner de santé. Sa composition unique associe les bienfaits de la nature et les avancées de la cosmétique moderne pour un résultat visible dès les premières utilisations.",
+      "en": "Perfect X is your daily wellness companion. This exceptional product, designed to enhance your care routine, gives your body everything it needs to radiate health. Its unique composition combines the benefits of nature with modern cosmetic advances for visible results from the very first uses."
+    },
+    "shortDescription": {
+      "fr": "Votre allié bien-être pour rayonner au quotidien.",
+      "en": "Your wellness companion to radiate health daily."
+    },
+    "benefits": {
+      "fr": ["Résultats visibles rapidement", "Formule premium", "Usage quotidien", "Bien-être global"],
+      "en": ["Visible results quickly", "Premium formula", "Daily use", "Overall wellness"]
+    }
+  }
+]
