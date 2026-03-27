@@ -9,7 +9,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] },
+  transition: { duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] as const },
 });
 
 export default function HeroSection() {
@@ -113,7 +113,7 @@ export default function HeroSection() {
           <motion.div
             initial={{ opacity: 0, scale: 0.97, x: 20 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 1.1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.1, delay: 0.2, ease: [0.22, 1, 0.36, 1] as const }}
             className="hidden lg:block relative"
           >
             {/* Decorative ring */}

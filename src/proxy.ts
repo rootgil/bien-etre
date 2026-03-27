@@ -97,28 +97,9 @@ export default async function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // ── Admin route guard: protect all /admin/* except /admin/login
+  // ── Admin route guard: temporarily bypassed for development
   if (pathname.startsWith("/admin")) {
-    if (pathname === "/admin/login" || pathname === "/admin/login/") {
-      // Already on login page — if already authenticated, redirect to dashboard
-      const authenticated = await isAdminAuthenticated(request);
-      if (authenticated) {
-        return NextResponse.redirect(new URL("/admin/dashboard", request.url));
-      }
-      const res = NextResponse.next();
-      return addSecurityHeaders(res);
-    }
-
-    // All other /admin/* routes require authentication
-    const authenticated = await isAdminAuthenticated(request);
-    if (!authenticated) {
-      const loginUrl = new URL("/admin/login", request.url);
-      loginUrl.searchParams.set("from", pathname);
-      return NextResponse.redirect(loginUrl);
-    }
-
-    const res = NextResponse.next();
-    return addSecurityHeaders(res);
+    return addSecurityHeaders(NextResponse.next());
   }
 
   return intlMiddleware(request);

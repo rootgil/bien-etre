@@ -37,17 +37,34 @@ export function useGeo() {
       try {
         // Load geo
         let geoData: GeoData;
+        // In dev, if a country override changed, bust the geo cache
+        const devCountryOverride =
+          process.env.NODE_ENV !== "production"
+            ? localStorage.getItem("bienetre_dev_country") ?? ""
+            : "";
+        // Also bust the cache if it's locked on the FR fallback in dev
         const cached = getCachedGeo();
-        if (cached) {
-          geoData = cached;
+        if (process.env.NODE_ENV !== "production" && cached?.countryCode === "FR" && !devCountryOverride) {
+          localStorage.removeItem(GEO_CACHE_KEY);
+        }
+        const freshCached = getCachedGeo();
+        const cacheMatchesDev =
+          !devCountryOverride || (freshCached?.countryCode === devCountryOverride);
+        if (freshCached && cacheMatchesDev) {
+          geoData = freshCached;
         } else {
-          const res = await fetch("/api/geo");
+          const url = devCountryOverride ? `/api/geo?country=${devCountryOverride}` : "/api/geo";
+          const res = await fetch(url, { cache: "no-store" });
           if (!res.ok) throw new Error("Geo failed");
           geoData = await res.json();
-          localStorage.setItem(
-            GEO_CACHE_KEY,
-            JSON.stringify({ ...geoData, fetchedAt: Date.now() })
-          );
+          // Don't cache the EUR fallback in dev — it would lock the wrong currency
+          const isFallback = geoData.countryCode === "FR" && !devCountryOverride;
+          if (!isFallback) {
+            localStorage.setItem(
+              GEO_CACHE_KEY,
+              JSON.stringify({ ...geoData, fetchedAt: Date.now() })
+            );
+          }
         }
         setGeo(geoData);
 

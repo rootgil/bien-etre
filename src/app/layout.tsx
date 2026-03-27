@@ -50,6 +50,7 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning>
       <body
+        suppressHydrationWarning
         className={`${playfair.variable} ${dmSans.variable} ${cormorant.variable}`}
       >
         {children}
