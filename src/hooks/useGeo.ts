@@ -6,10 +6,12 @@ import { FALLBACK_GEO } from "@/lib/geo";
 import { convertPrice, formatPrice } from "@/lib/currency";
 
 const GEO_CACHE_KEY = "bienetre_geo";
+const GEO_CACHE_VERSION = 2; // increment to bust all existing caches on next deploy
 const GEO_TTL_MS = 24 * 60 * 60 * 1000; // 24h
 
 interface CachedGeo extends GeoData {
   fetchedAt: number;
+  v?: number;
 }
 
 function getCachedGeo(): GeoData | null {
@@ -17,7 +19,7 @@ function getCachedGeo(): GeoData | null {
     const raw = localStorage.getItem(GEO_CACHE_KEY);
     if (!raw) return null;
     const parsed: CachedGeo = JSON.parse(raw);
-    if (Date.now() - parsed.fetchedAt > GEO_TTL_MS) {
+    if (parsed.v !== GEO_CACHE_VERSION || Date.now() - parsed.fetchedAt > GEO_TTL_MS) {
       localStorage.removeItem(GEO_CACHE_KEY);
       return null;
     }
@@ -37,34 +39,28 @@ export function useGeo() {
       try {
         // Load geo
         let geoData: GeoData;
-        // In dev, if a country override changed, bust the geo cache
         const devCountryOverride =
           process.env.NODE_ENV !== "production"
             ? localStorage.getItem("bienetre_dev_country") ?? ""
             : "";
-        // Also bust the cache if it's locked on the FR fallback in dev
-        const cached = getCachedGeo();
-        if (process.env.NODE_ENV !== "production" && cached?.countryCode === "FR" && !devCountryOverride) {
-          localStorage.removeItem(GEO_CACHE_KEY);
-        }
-        const freshCached = getCachedGeo();
-        const cacheMatchesDev =
-          !devCountryOverride || (freshCached?.countryCode === devCountryOverride);
-        if (freshCached && cacheMatchesDev) {
-          geoData = freshCached;
+
+        // In dev with an override, always fetch fresh to respect the override.
+        // getCachedGeo() also busts old cache entries via the version stamp.
+        const cached = devCountryOverride ? null : getCachedGeo();
+
+        if (cached) {
+          geoData = cached;
         } else {
           const url = devCountryOverride ? `/api/geo?country=${devCountryOverride}` : "/api/geo";
+          // /api/geo is cached at the Vercel edge (Cache-Control: public, max-age=86400)
+          // so no-store here just skips the browser cache, not the edge cache - stays fast
           const res = await fetch(url, { cache: "no-store" });
           if (!res.ok) throw new Error("Geo failed");
           geoData = await res.json();
-          // Don't cache the EUR fallback in dev - it would lock the wrong currency
-          const isFallback = geoData.countryCode === "FR" && !devCountryOverride;
-          if (!isFallback) {
-            localStorage.setItem(
-              GEO_CACHE_KEY,
-              JSON.stringify({ ...geoData, fetchedAt: Date.now() })
-            );
-          }
+          localStorage.setItem(
+            GEO_CACHE_KEY,
+            JSON.stringify({ ...geoData, fetchedAt: Date.now(), v: GEO_CACHE_VERSION })
+          );
         }
         setGeo(geoData);
 
